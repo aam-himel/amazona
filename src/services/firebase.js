@@ -237,6 +237,30 @@ class Firebase {
       .limit(itemsCount)
       .get();
 
+  getPhoneProducts = (itemsCount = 12) =>
+    this.db
+      .collection("products")
+      .where("category", "==", "mobile")
+      .limit(itemsCount)
+      .get();
+
+  getHomeApplianceProduct = (itemsCount = 12) =>
+    this.db
+    .collection("products")
+    .where("category", "==", "home_appliance").get();
+  // getNewProducts = (itemsCount = 12) => {
+  //   this.db
+  //   .collection("products")
+  //   .where("category", "==", "mobile")
+  //   .get()
+  // }
+  // getHomeApplianceProducts = (itemsCount = 12) => {
+  //   this.db
+  //   .collection("products")
+  //   .where("category", "==", "home_appliance")
+  //   .limit(itemsCount)
+  //   .get()
+  // }
   getRecommendedProducts = (itemsCount = 12) =>
     this.db
       .collection("products")

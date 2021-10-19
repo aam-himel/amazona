@@ -8,3 +8,5 @@ export { default as useProduct } from './useProduct';
 export { default as useRecommendedProducts } from './useRecommendedProducts';
 export { default as useScrollTop } from './useScrollTop';
 
+export { default as useHomeApplianceProducts } from './useHomeApplianceProducts';
+export { default as usePhoneProducts} from "./usePhoneProducts";

@@ -14,10 +14,17 @@ import * as Yup from 'yup';
 
 // Default brand names that I used. You can use what you want
 const brandOptions = [
-  { value: 'Salt Maalat', label: 'Salt Maalat' },
-  { value: 'Betsin Maalat', label: 'Betsin Maalat' },
-  { value: 'Sexbomb', label: 'Sexbomb' },
-  { value: 'Black Kibal', label: 'Black Kibal' }
+  { value: 'Walton', label: 'Walton' },
+  { value: 'Iphone', label: 'Iphone' },
+  { value: 'Samsung', label: 'Samsung' },
+  { value: 'BMW', label: 'BMW' },
+];
+const categoryOptions = [
+  { value: 'phone', label: 'Mobile' },
+  { value: 'home_appliance', label: 'Home Appliance' },
+  { value: 'auto_mobile', label: 'Auto Mobile' },
+  { value: 'wardrobe', label: 'Wardrobe' },
+  { value: 'office_equipment', label: 'Office Equipment' },
 ];
 
 const FormSchema = Yup.object().shape({
@@ -46,7 +53,9 @@ const FormSchema = Yup.object().shape({
   isRecommended: Yup.boolean(),
   availableColors: Yup.array()
     .of(Yup.string().required())
-    .min(1, 'Please add a default color for this product.')
+    .min(1, 'Please add a default color for this product.'),
+  category: Yup.string()
+    .required('Please choose a category')
 });
 
 const ProductForm = ({ product, onSubmit, isLoading }) => {
@@ -60,7 +69,8 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     sizes: product?.sizes || [],
     isFeatured: product?.isFeatured || false,
     isRecommended: product?.isRecommended || false,
-    availableColors: product?.availableColors || []
+    availableColors: product?.availableColors || [],
+    categories: product?.category || ''
   };
 
   const {
@@ -169,6 +179,21 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     label="* Keywords"
                   />
                 </div>
+
+                {/* Category Section */}
+                {console.log(values)}
+                <div className="product-form-field">
+                  <CustomCreatableSelect
+                    defaultValue={{ value: values.category, label: values.category }}
+                    options={categoryOptions}
+                    name="category"
+                    iid="category"
+                    disabled={isLoading}
+                    placeholder="Create/Select category"
+                    label="* category"
+                  />
+                </div>
+
                 &nbsp;
                 <div className="product-form-field">
                   <CustomCreatableSelect
@@ -327,7 +352,7 @@ ProductForm.propTypes = {
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
-    availableColors: PropType.arrayOf(PropType.string)
+    category: PropType.string
   }).isRequired,
   onSubmit: PropType.func.isRequired,
   isLoading: PropType.bool.isRequired

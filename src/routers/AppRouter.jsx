@@ -36,11 +36,11 @@ const AppRouter = () => (
           exact
           path={ROUTES.SHOP}
         />
-        {/* <Route
+        <Route
           component={view.FeaturedProducts}
           exact
           path={ROUTES.FEATURED_PRODUCTS}
-        /> */}
+        />
         <Route
           component={view.RecommendedProducts}
           exact
