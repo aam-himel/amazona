@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: center;
 
   @include mobile {
     padding: 0;
@@ -19,6 +20,12 @@
   }
 }
 
+.footer-center {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
 .footer-logo {
   width: 15rem;
   height: 6rem;
@@ -26,7 +33,7 @@
 }
 
 .footer-col-1 {
-  flex-basis: 40%; 
+  flex-basis: 40%;
 
   @include mobile {
     flex-basis: none;
