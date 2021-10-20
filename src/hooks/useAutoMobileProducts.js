@@ -2,18 +2,18 @@ import { useDidMount } from 'hooks';
 import { useEffect, useState } from 'react';
 import firebase from 'services/firebase';
 
-const useHomeApplianceProducts = (itemsCount) => {
-  const [homeApplianceProducts, setHomeApplianceProducts] = useState([]);
+const useAutoMobileProducts = (itemsCount) => {
+  const [autoMobileProducts, setAutoMobileProducts] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const didMount = useDidMount(true);
 
-  const fetchHomeApplianceProducts = async () => {
+  const fetchAutoMobileProducts = async () => {
     try {
       setLoading(true);
       setError('');
 
-      const docs = await firebase.getHomeApplianceProducts(itemsCount);
+      const docs = await firebase.getAutoMobileProducts(itemsCount);
 
       if (docs.empty) {
         if (didMount) {
@@ -29,7 +29,7 @@ const useHomeApplianceProducts = (itemsCount) => {
         });
 
         if (didMount) {
-          setHomeApplianceProducts(items);
+          setAutoMobileProducts(items);
           setLoading(false);
         }
       }
@@ -42,14 +42,14 @@ const useHomeApplianceProducts = (itemsCount) => {
   };
 
   useEffect(() => {
-    if (homeApplianceProducts.length === 0 && didMount) {
-      fetchHomeApplianceProducts();
+    if (autoMobileProducts.length === 0 && didMount) {
+      fetchAutoMobileProducts();
     }
   }, []);
 
   return {
-    fetchHomeApplianceProducts, homeApplianceProducts, isLoading, error
+    fetchAutoMobileProducts, autoMobileProducts, isLoading, error
   };
 };
 
-export default useHomeApplianceProducts;
+export default useAutoMobileProducts;

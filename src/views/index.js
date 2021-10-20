@@ -19,7 +19,7 @@ export { default as Shop } from './shop';
 export { default as ViewProduct } from './view_product';
 
 export { default as HomeAppliance } from "./home_appliance";
-export { default as Mobile } from "./mobile";
+export { default as Phone } from "./phone";
 export { default as OfficeEquipment } from "./office_equipment";
 export { default as AutoMobile } from "./auto_mobile";
 export { default as Wardrobe } from "./wardrobe";

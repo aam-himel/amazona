@@ -1,26 +1,27 @@
 import { MessageDisplay } from 'components/common';
 import { ProductShowcaseGrid } from 'components/product';
-import { useDocumentTitle,usePhoneProducts, useScrollTop } from 'hooks';
+import { useDocumentTitle, useFeaturedProducts, useScrollTop } from 'hooks';
+import useHomeApplianceProducts from 'hooks/useHomeApplianceProducts';
 import bannerImg from 'images/banner-guy.png';
 import React from 'react';
 
-const Mobile = () => {
-  useDocumentTitle('Mobile Products | Salinaka');
+const HomeAppliance = () => {
+  useDocumentTitle('Featured Products | Amazona');
   useScrollTop();
 
   const {
-    phoneProducts,
-    fetchPhoneProducts,
+    homeApplianceProducts,
+    fetchHomeApplianceProducts,
     isLoading,
     error
-  } = usePhoneProducts();
+  } = useHomeApplianceProducts();
 
   return (
     <main className="content">
       <div className="featured">
         <div className="banner">
           <div className="banner-desc">
-            <h1>Featured Products</h1>
+            <h1>homeApplianceProducts</h1>
           </div>
           <div className="banner-img">
             <img src={bannerImg} alt="" />
@@ -31,12 +32,12 @@ const Mobile = () => {
             {(error && !isLoading) ? (
               <MessageDisplay
                 message={error}
-                action={fetchPhoneProducts}
+                action={fetchHomeApplianceProducts}
                 buttonLabel="Try Again"
               />
             ) : (
               <ProductShowcaseGrid
-                products={phoneProducts}
+                products={homeApplianceProducts}
                 skeletonCount={6}
               />
             )}
@@ -47,4 +48,4 @@ const Mobile = () => {
   );
 };
 
-export default Mobile;
+export default HomeAppliance;

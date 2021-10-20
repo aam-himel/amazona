@@ -2,18 +2,18 @@ import { useDidMount } from 'hooks';
 import { useEffect, useState } from 'react';
 import firebase from 'services/firebase';
 
-const useHomeApplianceProducts = (itemsCount) => {
-  const [homeApplianceProducts, setHomeApplianceProducts] = useState([]);
+const useOfficeEquipmentProducts = (itemsCount) => {
+  const [officeEquipmentProducts, setOfficeEquipmentProducts] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const didMount = useDidMount(true);
 
-  const fetchHomeApplianceProducts = async () => {
+  const fetchOfficeEquipmentProducts = async () => {
     try {
       setLoading(true);
       setError('');
 
-      const docs = await firebase.getHomeApplianceProducts(itemsCount);
+      const docs = await firebase.getOfficeEquipmentProducts(itemsCount);
 
       if (docs.empty) {
         if (didMount) {
@@ -29,7 +29,7 @@ const useHomeApplianceProducts = (itemsCount) => {
         });
 
         if (didMount) {
-          setHomeApplianceProducts(items);
+          setOfficeEquipmentProducts(items);
           setLoading(false);
         }
       }
@@ -42,14 +42,14 @@ const useHomeApplianceProducts = (itemsCount) => {
   };
 
   useEffect(() => {
-    if (homeApplianceProducts.length === 0 && didMount) {
-      fetchHomeApplianceProducts();
+    if (officeEquipmentProducts.length === 0 && didMount) {
+      fetchOfficeEquipmentProducts();
     }
   }, []);
 
   return {
-    fetchHomeApplianceProducts, homeApplianceProducts, isLoading, error
+    officeEquipmentProducts, fetchOfficeEquipmentProducts, isLoading, error
   };
 };
 
-export default useHomeApplianceProducts;
+export default useOfficeEquipmentProducts;

@@ -20,7 +20,7 @@ const brandOptions = [
   { value: 'BMW', label: 'BMW' },
 ];
 const categoryOptions = [
-  { value: 'phone', label: 'Mobile' },
+  { value: 'mobile', label: 'Mobile' },
   { value: 'home_appliance', label: 'Home Appliance' },
   { value: 'auto_mobile', label: 'Auto Mobile' },
   { value: 'wardrobe', label: 'Wardrobe' },

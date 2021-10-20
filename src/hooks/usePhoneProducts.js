@@ -14,7 +14,7 @@ const usePhoneProducts = (itemsCount) => {
       setError('');
 
       const docs = await firebase.getPhoneProducts(itemsCount);
-      console.log(firebase.getFeaturedProducts(itemsCount));
+
       if (docs.empty) {
         if (didMount) {
           setError('No featured products found.');
@@ -48,7 +48,7 @@ const usePhoneProducts = (itemsCount) => {
   }, []);
 
   return {
-    phoneProducts, fetchPhoneProducts, isLoading, error
+    fetchPhoneProducts, phoneProducts, isLoading, error
   };
 };
 

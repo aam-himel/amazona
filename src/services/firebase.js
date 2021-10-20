@@ -237,30 +237,45 @@ class Firebase {
       .limit(itemsCount)
       .get();
 
-  getPhoneProducts = (itemsCount = 12) =>
+  // home appliance
+  getHomeApplianceProducts = (itemsCount = 12) =>
     this.db
       .collection("products")
-      .where("category", "==", "mobile")
+      .where("category", "==", "home_appliance")
       .limit(itemsCount)
       .get();
 
-  getHomeApplianceProduct = (itemsCount = 12) =>
+  // OfficeEquipmentProducts
+  getOfficeEquipmentProducts = (itemsCount = 12) =>
     this.db
-    .collection("products")
-    .where("category", "==", "home_appliance").get();
-  // getNewProducts = (itemsCount = 12) => {
-  //   this.db
-  //   .collection("products")
-  //   .where("category", "==", "mobile")
-  //   .get()
-  // }
-  // getHomeApplianceProducts = (itemsCount = 12) => {
-  //   this.db
-  //   .collection("products")
-  //   .where("category", "==", "home_appliance")
-  //   .limit(itemsCount)
-  //   .get()
-  // }
+      .collection("products")
+      .where("category", "==", "office_equipment")
+      .limit(itemsCount)
+      .get();
+  // AutoMobile
+  getAutoMobileProducts = (itemsCount = 12) =>
+    this.db
+      .collection("products")
+      .where("category", "==", "auto_mobile")
+      .limit(itemsCount)
+      .get();
+
+  //phoneProducts
+  getPhoneProducts = (itemsCount = 12) =>
+    this.db
+      .collection("products")
+      .where("category", "==", "phone")
+      .limit(itemsCount)
+      .get();
+
+   //wardrobeProducts   
+  getWardrobeProducts = (itemsCount = 12) =>
+    this.db
+      .collection("products")
+      .where("category", "==", "wardrobe")
+      .limit(itemsCount)
+      .get();
+
   getRecommendedProducts = (itemsCount = 12) =>
     this.db
       .collection("products")
